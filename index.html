@@ -1,15 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-<link rel="stylesheet" href="css/style.css">
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
-<head>
-    <meta charset="UTF-8">
-    <title>Grzegorz Sikora - recruitment task</title>
-</head>
-<body>
-<main id="app" class="container">
-
-</main>
-</body>
-<script src="build/out.js"></script>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Webpack App</title>
+        <link rel="stylesheet" href="styles/style.css">
+    </head>
+    <body>
+        <div id="controls">
+            <input type="number" min="0" max="100" step="1" class="js-input" />
+            <button type="button" data-action="create">Utwórz</button>					
+            <button type="button" data-action="destroy">Usuń</button>
+        </div>
+    
+        <div id="boxes"></div>
+    
+    
+        <form id="search-form">
+            <input				
+                type="text"
+                name="query"
+                autocomplete="off"
+                placeholder="Search images..."
+                /> 
+        </form>
+        <section class="results">
+            
+        </section> 
+    </body>
+    
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker
+                    .register("service-worker.js")
+                    .then((registration) => {
+                        console.log("Service Worker registered: ", registration);
+                    })
+                    .catch((registrationError) => {
+                        console.error("Service Worker registration failed: ", registrationError);
+                    });
+            });
+        }
+    </script>
+    <script src="src/index.js"></script>
+    <script type="module" src="node_modules/basiclightbox/src/scripts/main.js"></script>
 </html>
